@@ -1,40 +1,76 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "id": "5977",
+      "cityName": "Brisbane",
+      "country": "Australia",
+      "date": "2026-05-30T01:56:22.310Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": "-27.537743268252445",
+        "lng": "153.04163994834747"
       },
-      "id": 17806751
+      "emoji": "🇦🇺"
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "id": "78f9",
+      "cityName": "Townsville",
+      "country": "Australia",
+      "date": "2026-05-30T01:56:33.376Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": "-19.295901661404944",
+        "lng": "146.84378974999441"
       },
-      "id": 98443197
+      "emoji": "🇦🇺"
+    },
+    {
+      "id": "1ac7",
+      "cityName": "Gold Coast",
+      "country": "Australia",
+      "date": "2026-05-30T01:56:50.955Z",
+      "notes": "",
+      "position": {
+        "lat": "-28.02389463950024",
+        "lng": "153.42648284304514"
+      },
+      "emoji": "🇦🇺"
+    },
+    {
+      "id": "6597",
+      "cityName": "Dubai",
+      "country": "United Arab Emirates (the)",
+      "date": "2026-05-30T01:57:07.537Z",
+      "notes": "",
+      "position": {
+        "lat": "25.270755319711025",
+        "lng": "55.337128144662024"
+      },
+      "emoji": "🇦🇪"
+    },
+    {
+      "id": "c5cc",
+      "cityName": "Bengaluru",
+      "country": "India",
+      "date": "2026-05-30T01:57:14.707Z",
+      "notes": "",
+      "position": {
+        "lat": "12.853251418165343",
+        "lng": "77.62477803242484"
+      },
+      "emoji": "🇮🇳"
+    },
+    {
+      "id": "9a59",
+      "cityName": "Kochi",
+      "country": "India",
+      "date": "2026-05-30T01:57:20.233Z",
+      "notes": "",
+      "position": {
+        "lat": "9.941554652493545",
+        "lng": "76.27484435901137"
+      },
+      "emoji": "🇮🇳"
     }
   ]
 }

@@ -1,12 +1,15 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
 import { useEffect, useState } from "react";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Form.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import Spinner from "./Spinner";
+import Message from "./Message";
+import { useCities } from "../Contexts/CitiesContext";
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -26,9 +29,11 @@ function Form() {
   const navigate = useNavigate();
   const [emoji, setEmoji] = useState("");
   const [geoCodingError, setGeoCodingError] = useState("");
+  const { createCity, isLoading } = useCities();
   // const [searchParams] = useSearchParams();
 
   useEffect(() => {
+    if (!lat || !lng) return;
     async function fetchCityData() {
       try {
         setIsLoadingGeoCoding(true);
@@ -39,10 +44,10 @@ function Form() {
             "That doesn't seem to be a city. Try different location ☹️!"
           );
         if (data.city && data.countryCode) {
+          setGeoCodingError("");
           setCityName(data.city);
           setCountry(data.countryName);
           setEmoji(convertToEmoji(data.countryCode));
-          setGeoCodingError("");
         }
       } catch (error) {
         setGeoCodingError(error.message);
@@ -55,15 +60,38 @@ function Form() {
 
   function onClick(e) {
     e.preventDefault();
-    console.log(cityName, country, date, notes);
+    // console.log(cityName, country, date, notes);
     navigate(-1);
   }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!cityName || !country) return;
+    const newCity = {
+      cityName,
+      country,
+      date,
+      notes,
+      position: { lat, lng },
+      emoji,
+    };
+    await createCity(newCity);
+    // const storedCities = JSON.parse(localStorage.getItem("cities")) || [];
+    // storedCities.push(newCity);
+    // localStorage.setItem("cities", JSON.stringify(storedCities));
+    navigate("/app/cities");
+  }
+
+  if (!lat || !lng)
+    return <Message message="Start by clicking somewhere on the map" />;
+
   if (isLoadingGeoCoding) return <Spinner />;
-  if (geoCodingError)
-    return <div className={styles.formError}>{geoCodingError}</div>;
+  if (geoCodingError) return <Message message={geoCodingError} />;
 
   return (
-    <form className={styles.form}>
+    <form
+      className={`${styles.form}${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -76,10 +104,19 @@ function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        {/* <input
           id="date"
           onChange={(e) => setDate(e.target.value)}
           value={date}
+        /> */}
+        <DatePicker
+          id="date"
+          selected={date}
+          onChange={(date) => setDate(date)}
+          dateFormat="dd/MM/yyyy"
+          maxDate={new Date()}
+          showYearDropdown
+          scrollableMonthYearDropdown
         />
       </div>
 
@@ -93,16 +130,8 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <Button type="primary" onClick={(e) => onClick(e)}>
-          Add
-        </Button>
-        <Button
-          type="back"
-          onClick={(e) => {
-            e.preventDefault();
-            navigate(-1);
-          }}
-        >
+        <Button type="primary">Add</Button>
+        <Button type="back" onClick={onClick}>
           &larr; Back
         </Button>
       </div>
