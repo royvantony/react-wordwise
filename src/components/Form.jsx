@@ -41,7 +41,7 @@ function Form() {
         const data = await res.json();
         if (!data.city)
           throw new Error(
-            "That doesn't seem to be a city. Try different location ☹️!"
+            "That doesn't seem to be a city. Try different location ☹️!",
           );
         if (data.city && data.countryCode) {
           setGeoCodingError("");

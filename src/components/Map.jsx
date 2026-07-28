@@ -14,7 +14,6 @@ import { useCities } from "../Contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeoLocation";
 import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
-
 function Map() {
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([50, 13]);

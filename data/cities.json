@@ -61,14 +61,26 @@
       "emoji": "🇮🇳"
     },
     {
-      "id": "9a59",
-      "cityName": "Kochi",
-      "country": "India",
-      "date": "2026-05-30T01:57:20.233Z",
+      "id": "908c",
+      "cityName": "Kuwait City",
+      "country": "Kuwait",
+      "date": "2026-06-03T23:42:33.371Z",
       "notes": "",
       "position": {
-        "lat": "9.941554652493545",
-        "lng": "76.27484435901137"
+        "lat": "29.26534313909481",
+        "lng": "48.03645081245528"
+      },
+      "emoji": "🇰🇼"
+    },
+    {
+      "id": "7917",
+      "cityName": "Kochi",
+      "country": "India",
+      "date": "2026-07-15T01:29:57.775Z",
+      "notes": "",
+      "position": {
+        "lat": "9.955191044270416",
+        "lng": "76.24221850951248"
       },
       "emoji": "🇮🇳"
     }
